@@ -1,0 +1,42 @@
+# Escalation thresholds (days overdue)
+# Modify these without touching code
+
+escalation_stages:
+  stage_1:
+    min_days: 1
+    max_days: 7
+    tone: "warm_friendly"
+    subject_prefix: "Quick Reminder –"
+    salutation: "Hi {first_name},"
+    cta: "pay_now_link"
+    
+  stage_2:
+    min_days: 8
+    max_days: 14
+    tone: "polite_firm"
+    subject_prefix: "Payment Reminder –"
+    salutation: "Dear {name},"
+    cta: "confirm_payment_date"
+    
+  stage_3:
+    min_days: 15
+    max_days: 21
+    tone: "formal_serious"
+    subject_prefix: "IMPORTANT: Outstanding Payment –"
+    salutation: "Dear Mr./Ms. {last_name},"
+    cta: "respond_48hrs"
+    
+  stage_4:
+    min_days: 22
+    max_days: 30
+    tone: "stern_urgent"
+    subject_prefix: "FINAL NOTICE –"
+    salutation: "Dear Mr./Ms. {last_name},"
+    cta: "pay_immediately_or_call"
+    
+  legal_escalation:
+    min_days: 31
+    max_days: 999
+    tone: "N/A - manual_review"
+    action: "flag_for_legal"
+    no_email: true

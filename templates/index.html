@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Knot — Enterprise Credit Collections</title>
+  <meta name="description" content="AI-powered credit collections and invoice recovery system for enterprise finance teams." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <!-- ── LIGHT MESH BACKGROUND ── -->
+  <div class="mesh-bg">
+    <div class="mesh-blob blob-1"></div>
+    <div class="mesh-blob blob-2"></div>
+    <div class="mesh-blob blob-3"></div>
+  </div>
+
+  <!-- ── SPLASH SCREEN ── -->
+  <div id="splash">
+    <div class="splash-logo">
+      <div class="splash-icon">K</div>
+      <span>Knot</span>
+    </div>
+    <div class="splash-bar"><div class="splash-bar-fill"></div></div>
+  </div>
+
+  <!-- ── SIDEBAR ── -->
+  <aside id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">K</div>
+      <div>
+        <div class="brand-name">Knot</div>
+        <div class="brand-tag">Finance AI</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-page="home">
+        <i class="fa-solid fa-house"></i><span>Home</span>
+      </a>
+      <a href="#" class="nav-item" data-page="dashboard">
+        <i class="fa-solid fa-gauge-high"></i><span>Dashboard</span>
+      </a>
+      <a href="#" class="nav-item" data-page="collections">
+        <i class="fa-solid fa-list-check"></i><span>Collections</span>
+        <span class="nav-badge" id="queue-count">—</span>
+      </a>
+      <a href="#" class="nav-item" data-page="emaillab">
+        <i class="fa-solid fa-envelope-open-text"></i><span>Email Lab</span>
+      </a>
+      <a href="#" class="nav-item" data-page="analytics">
+        <i class="fa-solid fa-chart-line"></i><span>Analytics</span>
+      </a>
+      <a href="#" class="nav-item" data-page="audit">
+        <i class="fa-solid fa-table-list"></i><span>Audit Trail</span>
+      </a>
+      <a href="#" class="nav-item" data-page="settings">
+        <i class="fa-solid fa-sliders"></i><span>Settings</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="agent-status" id="agent-status-indicator">
+        <span class="status-dot idle"></span>
+        <span>Agent Idle</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main id="main">
+
+    <!-- ─── TOPBAR ─── -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <h2 class="page-title" id="page-title">Home</h2>
+        <span class="page-subtitle" id="page-subtitle">Welcome to Knot AI Platform</span>
+      </div>
+      <div class="topbar-right" id="topbar-actions" style="display: none;">
+        <label class="toggle-wrap">
+          <input type="checkbox" id="dry-run-toggle" checked />
+          <span class="toggle-slider"></span>
+          <span class="toggle-label">Safety Mode</span>
+        </label>
+        <button class="btn-primary" id="run-agent-btn">
+          <i class="fa-solid fa-bolt"></i> Run Agent
+        </button>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <select id="export-format" class="select-input" style="width: auto;">
+            <option value="xlsx">Excel (.xlsx)</option>
+            <option value="pdf">PDF (.pdf)</option>
+            <option value="docx">Word (.docx)</option>
+          </select>
+          <button class="btn-ghost" onclick="window.location.href='/api/audit/export?format=' + document.getElementById('export-format').value">
+            <i class="fa-solid fa-download"></i> Export
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ─── PAGES CONTAINER ─── -->
+
+    <!-- HOMEPAGE -->
+    <section class="page active" id="page-home">
+      <div class="home-container" style="max-width: 1200px; margin: 0 auto;">
+        <!-- Hero Section -->
+        <div class="home-hero" style="text-align: center; padding: 80px 20px 60px; margin-bottom: 60px;">
+          <div class="hero-badge" style="display: inline-block; padding: 8px 20px; background: #ffffff; color: #0f172a; border-radius: 100px; font-weight: 600; font-size: 0.9rem; margin-bottom: 32px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">✨ Finance AI Agent v2.0</div>
+          <h1 class="hero-title" style="font-size: 4.5rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 32px; color: #0f172a;">Recover capital with <br/><span style="color: #94a3b8;">intelligent automation.</span></h1>
+          <p class="hero-subtitle" style="font-size: 1.25rem; color: #475569; max-width: 650px; margin: 0 auto 40px; line-height: 1.6;">Knot is an autonomous, fail-safe credit collections platform designed for enterprise finance teams. It dramatically reduces DSO by analyzing delinquent invoices and generating context-aware follow-ups.</p>
+          <div class="hero-actions" style="display: flex; gap: 16px; justify-content: center;">
+            <button class="btn-primary" onclick="document.querySelector('[data-page=dashboard]').click()" style="padding: 16px 32px; font-size: 1.1rem; border-radius: 100px; background: #0f172a; color: white; font-weight: 600; border: none; cursor: pointer; transition: transform 0.2s;">
+              Launch Dashboard <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+            </button>
+            <button class="btn-ghost" onclick="document.querySelector('[data-page=collections]').click()" style="padding: 16px 32px; font-size: 1.1rem; border-radius: 100px; font-weight: 600; border: 1px solid #e2e8f0; color: #0f172a; background: white; cursor: pointer; transition: background 0.2s;">
+              Upload Invoices
+            </button>
+          </div>
+        </div>
+
+        <!-- Project Overview & Tech Stack -->
+        <div class="home-about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 60px;">
+          
+          <div class="about-card" style="background: #ffffff; border: 1px solid #e2e8f0; padding: 48px; border-radius: 32px; box-shadow: 0 4px 20px -2px rgba(0,0,0,0.02);">
+            <h3 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 20px; color: #0f172a; display: flex; align-items: center; gap: 12px;"><div style="width: 40px; height: 40px; background: #f1f5f9; border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-layer-group" style="color:#0f172a;"></i></div> Architecture</h3>
+            <p style="color: #475569; margin-bottom: 32px; line-height: 1.6; font-size: 1.1rem;">Built to meet enterprise production standards, Knot replaces fragile, monolithic dashboards with a robust headless REST API architecture. It integrates a <strong>Smart-Retry LLM Engine</strong> to sanitize outputs and ensure zero hallucinations.</p>
+            <ul class="feature-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px;">
+              <li style="display: flex; align-items: center; gap: 16px; color: #0f172a; font-weight: 500;"><i class="fa-solid fa-check" style="color: #0f172a; background: #f1f5f9; padding: 4px; border-radius: 50%; font-size: 0.8rem;"></i> Flask, SQLAlchemy, PostgreSQL</li>
+              <li style="display: flex; align-items: center; gap: 16px; color: #0f172a; font-weight: 500;"><i class="fa-solid fa-check" style="color: #0f172a; background: #f1f5f9; padding: 4px; border-radius: 50%; font-size: 0.8rem;"></i> Llama-3.3 70B & Mixtral 8x7B</li>
+              <li style="display: flex; align-items: center; gap: 16px; color: #0f172a; font-weight: 500;"><i class="fa-solid fa-check" style="color: #0f172a; background: #f1f5f9; padding: 4px; border-radius: 50%; font-size: 0.8rem;"></i> Pydantic structured validation</li>
+              <li style="display: flex; align-items: center; gap: 16px; color: #0f172a; font-weight: 500;"><i class="fa-solid fa-check" style="color: #0f172a; background: #f1f5f9; padding: 4px; border-radius: 50%; font-size: 0.8rem;"></i> Vanilla JS SPA + Tailwind CSS</li>
+            </ul>
+          </div>
+
+          <div class="about-card" style="background: #ffffff; border: 1px solid #e2e8f0; padding: 48px; border-radius: 32px; box-shadow: 0 4px 20px -2px rgba(0,0,0,0.02);">
+            <h3 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 20px; color: #0f172a; display: flex; align-items: center; gap: 12px;"><div style="width: 40px; height: 40px; background: #f1f5f9; border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-bullseye" style="color:#0f172a;"></i></div> Advantages</h3>
+            <p style="color: #475569; margin-bottom: 32px; line-height: 1.6; font-size: 1.1rem;">Designed for high-volume B2B collections, Knot allows finance managers to scale their recovery efforts without scaling their headcount.</p>
+            <ul class="feature-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px;">
+              <li style="display: flex; align-items: flex-start; gap: 16px; color: #0f172a;"><i class="fa-solid fa-bolt" style="color: #0f172a; background: #f1f5f9; padding: 4px; border-radius: 50%; font-size: 0.8rem; margin-top:2px;"></i> <div><strong style="display:block; margin-bottom:4px;">0% Failure Logic</strong> Gracefully handles LLM downtime and parsing errors without crashing.</div></li>
+              <li style="display: flex; align-items: flex-start; gap: 16px; color: #0f172a;"><i class="fa-solid fa-shield-halved" style="color: #0f172a; background: #f1f5f9; padding: 4px; border-radius: 50%; font-size: 0.8rem; margin-top:2px;"></i> <div><strong style="display:block; margin-bottom:4px;">Immutable Audit Trail</strong> Every action, legal flag, and AI generation is permanently logged.</div></li>
+              <li style="display: flex; align-items: flex-start; gap: 16px; color: #0f172a;"><i class="fa-solid fa-file-export" style="color: #0f172a; background: #f1f5f9; padding: 4px; border-radius: 50%; font-size: 0.8rem; margin-top:2px;"></i> <div><strong style="display:block; margin-bottom:4px;">Board-Ready Reports</strong> Instant PDF, Word, and highly-formatted Excel exports.</div></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div style="background: #0f172a; padding: 48px; border-radius: 32px; text-align: center; margin-bottom: 60px;">
+          <h3 style="font-size: 2rem; color: #ffffff; margin-bottom: 16px; font-weight: 700;">Get In Touch</h3>
+          <p style="color: #94a3b8; margin-bottom: 32px; font-size: 1.1rem;">For deployment inquiries or to discuss this project, reach out below.</p>
+          <div style="display: flex; justify-content: center; gap: 32px;">
+            <a href="mailto:namishrathy26@gmail.com" target="_blank" style="color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 1.1rem; padding: 12px 24px; background: rgba(255,255,255,0.1); border-radius: 100px; transition: background 0.2s;"><i class="fa-solid fa-envelope"></i> Email</a>
+            <a href="https://www.linkedin.com/in/namish-rathy/" target="_blank" style="color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 1.1rem; padding: 12px 24px; background: rgba(255,255,255,0.1); border-radius: 100px; transition: background 0.2s;"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/LuciferMorningStar2605" target="_blank" style="color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 1.1rem; padding: 12px 24px; background: rgba(255,255,255,0.1); border-radius: 100px; transition: background 0.2s;"><i class="fa-brands fa-github"></i> GitHub</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DASHBOARD PAGE -->
+    <section class="page" id="page-dashboard">
+      <!-- KPI CARDS -->
+      <div class="kpi-grid">
+        <div class="kpi-card purple">
+          <div class="kpi-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Total Invoices</div>
+            <div class="kpi-value" id="kpi-total">—</div>
+          </div>
+          <div class="kpi-spark"></div>
+        </div>
+        <div class="kpi-card blue">
+          <div class="kpi-icon"><i class="fa-solid fa-paper-plane"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Follow-ups Sent</div>
+            <div class="kpi-value" id="kpi-sent">—</div>
+          </div>
+        </div>
+        <div class="kpi-card red">
+          <div class="kpi-icon"><i class="fa-solid fa-gavel"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Legal Escalations</div>
+            <div class="kpi-value" id="kpi-legal">—</div>
+          </div>
+        </div>
+        <div class="kpi-card green">
+          <div class="kpi-icon"><i class="fa-solid fa-sack-dollar"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Value at Risk</div>
+            <div class="kpi-value" id="kpi-value">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BENTO GRID -->
+      <div class="bento-grid">
+        <!-- Stage Distribution -->
+        <div class="bento-card bento-chart">
+          <div class="bento-header">
+            <span class="bento-title">Stage Distribution</span>
+            <span class="bento-tag">Real-time</span>
+          </div>
+          <canvas id="stageChart"></canvas>
+        </div>
+
+        <!-- Recovery Rate Gauge -->
+        <div class="bento-card bento-gauge">
+          <div class="bento-header">
+            <span class="bento-title">Recovery Rate</span>
+          </div>
+          <div class="gauge-wrap">
+            <canvas id="gaugeChart"></canvas>
+            <div class="gauge-label" id="gauge-label">—%</div>
+          </div>
+        </div>
+
+        <!-- Recent Alerts -->
+        <div class="bento-card bento-alerts">
+          <div class="bento-header">
+            <span class="bento-title">Priority Alerts</span>
+            <span class="bento-tag red">Needs Action</span>
+          </div>
+          <div id="alert-list" class="alert-list">
+            <div class="skeleton-row"></div>
+            <div class="skeleton-row"></div>
+            <div class="skeleton-row"></div>
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="bento-card bento-stats">
+          <div class="bento-header">
+            <span class="bento-title">Stage Breakdown</span>
+          </div>
+          <div class="stage-bars" id="stage-bars">
+            <div class="stage-bar-item">
+              <div class="stage-bar-label"><span class="stage-dot s1"></span> Stage 1 — Friendly</div>
+              <div class="bar-track"><div class="bar-fill s1" id="bar-s1" style="width:0%"></div></div>
+              <span id="bar-s1-val">0</span>
+            </div>
+            <div class="stage-bar-item">
+              <div class="stage-bar-label"><span class="stage-dot s2"></span> Stage 2 — Firm</div>
+              <div class="bar-track"><div class="bar-fill s2" id="bar-s2" style="width:0%"></div></div>
+              <span id="bar-s2-val">0</span>
+            </div>
+            <div class="stage-bar-item">
+              <div class="stage-bar-label"><span class="stage-dot s3"></span> Stage 3 — Serious</div>
+              <div class="bar-track"><div class="bar-fill s3" id="bar-s3" style="width:0%"></div></div>
+              <span id="bar-s3-val">0</span>
+            </div>
+            <div class="stage-bar-item">
+              <div class="stage-bar-label"><span class="stage-dot s4"></span> Stage 4 — Final</div>
+              <div class="bar-track"><div class="bar-fill s4" id="bar-s4" style="width:0%"></div></div>
+              <span id="bar-s4-val">0</span>
+            </div>
+            <div class="stage-bar-item">
+              <div class="stage-bar-label"><span class="stage-dot s5"></span> Legal Escalation</div>
+              <div class="bar-track"><div class="bar-fill s5" id="bar-s5" style="width:0%"></div></div>
+              <span id="bar-s5-val">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLECTIONS PAGE -->
+    <section class="page" id="page-collections">
+      <div class="toolbar">
+        <div class="upload-zone" id="upload-zone">
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+          <span>Drop invoice CSV/XLSX or <label for="file-input" class="upload-link">browse</label></span>
+          <input type="file" id="file-input" accept=".csv,.xlsx" hidden />
+        </div>
+        <button class="btn-primary btn-sm" id="run-agent-btn-collection">
+          <i class="fa-solid fa-bolt"></i> Run Agent
+        </button>
+        <button class="btn-ghost btn-sm" id="preview-btn">
+          <i class="fa-solid fa-eye"></i> Preview File
+        </button>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header">
+          <span class="table-title">Active Invoice Queue</span>
+          <div class="table-filters" style="display:flex; gap:8px;">
+            <select id="filter-stage" class="select-input">
+              <option value="">All Stages</option>
+              <option value="1">Stage 1 — Friendly</option>
+              <option value="2">Stage 2 — Firm</option>
+              <option value="3">Stage 3 — Serious</option>
+              <option value="4">Stage 4 — Final</option>
+              <option value="5">Legal</option>
+            </select>
+            <select id="sort-by" class="select-input">
+              <option value="days_overdue">Oldest First</option>
+              <option value="amount_due">Highest Amount</option>
+            </select>
+            <button class="btn-ghost btn-sm" id="reset-filters-btn" style="color: var(--muted); border-color: rgba(255,255,255,0.1);">
+              <i class="fa-solid fa-arrow-rotate-right"></i> Reset
+            </button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table id="invoice-table">
+            <thead>
+              <tr>
+                <th>Invoice</th>
+                <th>Client</th>
+                <th>Amount Due</th>
+                <th>Days Overdue</th>
+                <th>Stage</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="invoice-tbody">
+              <tr><td colspan="7" class="table-empty">Run the agent to populate the queue.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMAIL LAB PAGE -->
+    <section class="page" id="page-emaillab">
+      <div class="email-lab-grid">
+        <div class="email-inbox-panel">
+          <div class="panel-title">Generated Emails</div>
+          <div id="email-list" class="email-list">
+            <div class="email-empty">No emails yet. Run the agent to generate follow-ups.</div>
+          </div>
+        </div>
+        <div class="email-preview-panel" id="email-preview-panel">
+          <div class="email-preview-empty">
+            <i class="fa-regular fa-envelope-open"></i>
+            <p>Select an invoice to preview the AI-generated communication.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANALYTICS PAGE -->
+    <section class="page" id="page-analytics">
+      <div class="analytics-grid">
+        <div class="analytics-card full-width">
+          <div class="bento-header">
+            <span class="bento-title">Days Sales Outstanding — Volume Trend</span>
+          </div>
+          <canvas id="trendChart" height="90"></canvas>
+        </div>
+        <div class="analytics-card">
+          <div class="bento-header">
+            <span class="bento-title">Amount at Risk by Stage</span>
+          </div>
+          <canvas id="amountChart"></canvas>
+        </div>
+        <div class="analytics-card">
+          <div class="bento-header">
+            <span class="bento-title">Communication Success Rate</span>
+          </div>
+          <canvas id="successChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUDIT TRAIL PAGE -->
+    <section class="page" id="page-audit">
+      <div class="table-card">
+        <div class="table-header">
+          <span class="table-title">Complete Event Log</span>
+          <div class="table-filters">
+            <select id="audit-filter" class="select-input">
+              <option value="">All Events</option>
+              <option value="SENT">Sent</option>
+              <option value="DRY_RUN_LOGGED">Dry Run</option>
+              <option value="LEGAL_ESCALATION">Legal</option>
+              <option value="GENERATION_FAILED">Failed</option>
+            </select>
+            <button class="btn-ghost btn-sm" id="clear-audit-btn" style="color: var(--red); border-color: rgba(244,63,94,0.2);">
+              <i class="fa-solid fa-trash"></i> Clear Log
+            </button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table id="audit-table">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Invoice</th>
+                <th>Client</th>
+                <th>Amount</th>
+                <th>Days</th>
+                <th>Stage</th>
+                <th>Status</th>
+                <th>Preview</th>
+              </tr>
+            </thead>
+            <tbody id="audit-tbody">
+              <tr><td colspan="8" class="table-empty">Loading audit trail…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SETTINGS PAGE -->
+    <section class="page" id="page-settings">
+      <div class="settings-grid">
+        <div class="settings-card">
+          <div class="settings-card-title"><i class="fa-solid fa-brain"></i> AI Engine</div>
+          <div class="setting-row">
+            <label>Primary Model</label>
+            <input type="text" value="llama-3.3-70b-versatile" class="setting-input" readonly />
+          </div>
+          <div class="setting-row">
+            <label>Fallback Model</label>
+            <input type="text" value="mixtral-8x7b-32768" class="setting-input" readonly />
+          </div>
+          <div class="setting-row">
+            <label>Temperature</label>
+            <input type="range" min="0" max="1" step="0.1" value="0.1" class="setting-range" id="temp-range"/>
+            <span id="temp-val">0.1</span>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-card-title"><i class="fa-solid fa-shield-halved"></i> Escalation Rules</div>
+          <div class="setting-row">
+            <label>Stage 1 (days)</label>
+            <input type="text" value="1 – 7 days" class="setting-input" readonly />
+          </div>
+          <div class="setting-row">
+            <label>Stage 2 (days)</label>
+            <input type="text" value="8 – 14 days" class="setting-input" readonly />
+          </div>
+          <div class="setting-row">
+            <label>Stage 3 (days)</label>
+            <input type="text" value="15 – 21 days" class="setting-input" readonly />
+          </div>
+          <div class="setting-row">
+            <label>Stage 4 (days)</label>
+            <input type="text" value="22 – 30 days" class="setting-input" readonly />
+          </div>
+          <div class="setting-row">
+            <label>Legal Flag (days)</label>
+            <input type="text" value="31 + days" class="setting-input" readonly />
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-card-title"><i class="fa-solid fa-envelope"></i> Email Configuration</div>
+          <div class="setting-row">
+            <label>SMTP Host</label>
+            <input type="text" value="smtp.gmail.com" class="setting-input" readonly />
+          </div>
+          <div class="setting-row">
+            <label>SMTP Port</label>
+            <input type="text" value="465" class="setting-input" readonly />
+          </div>
+          <div class="setting-row">
+            <label>Mode</label>
+            <span class="setting-badge">DRY RUN</span>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-card-title">
+             <div><i class="fa-solid fa-database"></i> Infrastructure</div>
+             <button class="btn-ghost btn-sm" id="clear-db-btn" style="margin-left: auto; color: var(--red); border-color: rgba(244,63,94,0.2);">
+               <i class="fa-solid fa-trash"></i> Wipe Data
+             </button>
+          </div>
+          <div class="setting-row">
+            <label>Database</label>
+            <input type="text" value="SQLAlchemy / Supabase-ready" class="setting-input" readonly />
+          </div>
+          <div class="setting-row">
+            <label>Deployment</label>
+            <input type="text" value="Render (Production)" class="setting-input" readonly />
+          </div>
+          <div class="setting-row">
+            <label>Scheduler</label>
+            <input type="text" value="GitHub Actions (Daily)" class="setting-input" readonly />
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── RUN MODAL ── -->
+  <div class="modal-overlay" id="run-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <i class="fa-solid fa-bolt modal-icon"></i>
+        <h3>Run AI Agent</h3>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <div class="spinner"></div>
+        <p id="modal-status">Initializing agent…</p>
+        <div class="progress-track">
+          <div class="progress-fill" id="modal-progress" style="width: 0%"></div>
+        </div>
+      </div>
+      <div class="modal-result" id="modal-result" style="display:none">
+        <div class="result-row"><span>Total Processed</span><b id="res-total">0</b></div>
+        <div class="result-row"><span>Follow-ups Sent</span><b id="res-sent">0</b></div>
+        <div class="result-row"><span>Legal Flags</span><b id="res-legal">0</b></div>
+        <div class="result-row"><span>Failures</span><b id="res-failed">0</b></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-ghost" id="modal-close" style="display:none">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── EMAIL DETAIL MODAL ── -->
+  <div class="modal-overlay" id="email-modal">
+    <div class="modal-box large">
+      <div class="modal-header">
+        <i class="fa-solid fa-envelope-open-text modal-icon"></i>
+        <h3 id="email-modal-invoice">Email Preview</h3>
+        <button class="modal-x" id="email-modal-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="email-modal-meta" id="email-modal-meta"></div>
+      <div class="email-modal-subject" id="email-modal-subject"></div>
+      <div class="email-modal-body" id="email-modal-body"></div>
+    </div>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

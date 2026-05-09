@@ -1,0 +1,39 @@
+name: Daily Invoice Follow-up
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs at 00:00 UTC every day
+  workflow_dispatch:      # Allows manual trigger from GitHub UI
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Finance Agent
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DRY_RUN_MODE: "false"  # Set to false for real automation
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_NAME: "Finance Team"
+        run: |
+          # Use default sample or a specific path if you maintain a master CSV in git
+          python main.py --file data/sample_invoices.csv --force

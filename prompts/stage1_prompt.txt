@@ -1,0 +1,10 @@
+STAGE 1 TONE GUIDELINES — Formal Reminder (1–7 days overdue):
+- Tone: Professional, courteous, and helpful.
+- Opening: Formal greeting. "Dear {{client_name}},"
+- Narrative: Assume a potential administrative oversight. Mention that the invoice remains outstanding.
+- Requirements: Include a "if payment has been initiated, please disregard" clause.
+- Call to Action: Provide the payment link clearly.
+- Closing: Professional sign-off (e.g., "Regards" or "Sincerely").
+- DO NOT use emojis.
+- DO NOT use casual language like "slip through the cracks".
+- PREFERRED WORDS: "outstanding", "administrative reminder", "processed", "reference".

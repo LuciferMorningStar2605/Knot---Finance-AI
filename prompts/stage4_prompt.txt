@@ -1,0 +1,10 @@
+STAGE 4 TONE GUIDELINES — Final Demand (22–30 days overdue):
+- Tone: Stern, final, and uncompromising.
+- Opening: "Dear {{client_name}},"
+- Narrative: This is the FINAL NOTICE before legal escalation. State the total days overdue.
+- Requirements: 24-hour final deadline.
+- Call to Action: Immediate payment via link or immediate telephonic contact with {{finance_manager}}.
+- Warning: State that failure to comply will result in the matter being transferred to legal/collections.
+- Closing: Formal.
+- DO NOT use emojis.
+- PREFERRED WORDS: "FINAL NOTICE", "demand for payment", "legal escalation", "last opportunity".

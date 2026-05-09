@@ -1,0 +1,9 @@
+STAGE 3 TONE GUIDELINES — Formal Notice (15–21 days overdue):
+- Tone: Serious and urgent.
+- Opening: "Dear {{client_name}},"
+- Narrative: State clearly that the invoice is significantly overdue despite multiple reminders. Mention that this may impact future credit terms.
+- Requirements: Provide a 48-hour deadline for response or payment.
+- Call to Action: Immediate payment or direct contact with the finance manager.
+- Closing: Formal (e.g., "Regards").
+- DO NOT use emojis.
+- PREFERRED WORDS: "serious concern", "overdue notice", "impact on credit", "immediate resolution".

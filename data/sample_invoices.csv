@@ -1,0 +1,11 @@
+invoice_no,client_name,client_email,amount_due,due_date,follow_up_count,currency,payment_link,finance_manager,company_name,notes
+INV-2024-001,Rajesh Kapoor,rajesh@acmecorp.com,45000.00,2026-05-05,0,INR,https://pay.example.com/inv001,Priya Sharma,TechSolutions Pvt Ltd,Stage 1 Test
+INV-2024-002,Sunita Mehta,sunita@globaltrade.in,128000.00,2026-04-28,1,INR,https://pay.example.com/inv002,Priya Sharma,TechSolutions Pvt Ltd,Stage 2 Test
+INV-2024-003,Vikram Industries,accounts@vikramindustries.com,75500.00,2026-04-20,2,INR,https://pay.example.com/inv003,Priya Sharma,TechSolutions Pvt Ltd,Stage 3 Test
+INV-2024-004,Meera Exports,meera@meeraexports.com,220000.00,2026-04-12,3,INR,https://pay.example.com/inv004,Priya Sharma,TechSolutions Pvt Ltd,Stage 4 Test
+INV-2024-005,Delta Logistics,finance@deltalogistics.in,18500.00,2026-03-10,4,INR,https://pay.example.com/inv005,Priya Sharma,TechSolutions Pvt Ltd,Legal Flag Test
+INV-2024-006,Arjun Retail,arjun@arjunretail.com,55000.00,2026-05-15,0,INR,https://pay.example.com/inv006,Priya Sharma,TechSolutions Pvt Ltd,Future Date Test
+INV-2024-007,Kavya Systems,kavya@kavyasystems.io,92000.00,2026-05-03,1,INR,https://pay.example.com/inv007,Priya Sharma,TechSolutions Pvt Ltd,Stage 1 Test
+INV-2024-008,Rohit Manufacturing,rohit@rohitmfg.com,310000.00,2026-04-26,3,INR,https://pay.example.com/inv008,Priya Sharma,TechSolutions Pvt Ltd,Stage 2 Test
+INV-2024-009,Nisha Consulting,nisha@nishaconsult.com,28000.00,2026-05-10,0,INR,https://pay.example.com/inv009,Priya Sharma,TechSolutions Pvt Ltd,Due Tomorrow Test
+INV-2024-010,Suresh Traders,suresh@sureshtraders.com,67500.00,2026-04-01,2,INR,https://pay.example.com/inv010,Priya Sharma,TechSolutions Pvt Ltd,Legal Flag Test 2

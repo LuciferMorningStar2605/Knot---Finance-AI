@@ -1,0 +1,9 @@
+STAGE 2 TONE GUIDELINES — Formal Follow-up (8–14 days overdue):
+- Tone: Firm but remains professional.
+- Opening: "Dear {{client_name}},"
+- Narrative: Note that this is a second communication regarding the outstanding balance.
+- Requirements: Request a specific date for payment confirmation.
+- Call to Action: Direct link to payment portal.
+- Closing: Formal.
+- DO NOT use emojis.
+- PREFERRED WORDS: "second reminder", "unresolved", "require confirmation", "prompt attention".
