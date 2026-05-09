@@ -41,6 +41,10 @@ elif db_url.startswith("postgres://"):
     # Fix for newer SQLAlchemy versions requiring 'postgresql://'
     db_url = db_url.replace("postgres://", "postgresql://", 1)
 
+if db_url and "?" in db_url:
+    # Supabase connection poolers append ?pgbouncer=true which psycopg2 rejects
+    db_url = db_url.split("?")[0]
+
 engine = create_engine(db_url)
 Session = sessionmaker(bind=engine)
 
