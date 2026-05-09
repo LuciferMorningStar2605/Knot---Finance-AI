@@ -33,6 +33,6 @@ class Settings:
     # Agent Behaviour
     MAX_EMAIL_RETRIES: int = int(os.getenv("MAX_EMAIL_RETRIES", "2"))
     BATCH_SIZE: int = int(os.getenv("BATCH_SIZE", "10"))
-    SKIP_WEEKENDS: bool = os.getenv("SKIP_WEEKENDS", "true").lower() == "true"
+    SKIP_WEEKENDS: bool = os.getenv("SKIP_WEEKENDS", "false").lower() == "true"
 
 settings = Settings()
