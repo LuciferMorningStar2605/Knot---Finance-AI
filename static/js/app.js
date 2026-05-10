@@ -85,7 +85,7 @@ function buildStageChart(dist) {
     data: { labels, datasets: [{ data: values, backgroundColor: colors, borderWidth: 2, borderColor: '#111827' }] },
     options: {
       responsive: true, maintainAspectRatio: false, cutout: '72%',
-      plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, color: '#5C5750', font: { family:'DM Sans',size:12 }, padding: 16 } } }
+      plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, color: '#5C5750', font: { family:'DM Sans',size:12 }, padding: 32 } } }
     }
   });
 }
@@ -297,6 +297,18 @@ function buildAnalyticsCharts() {
   const records = state.auditRecords;
   if (!records.length) return;
 
+  // KPIs
+  const total = records.length;
+  const legal = records.filter(r => r.stage === 5).length;
+  const avgDays = total ? Math.round(records.reduce((acc, r) => acc + (r.days_overdue || 0), 0) / total) : 0;
+  
+  const elTotal = document.getElementById('analytics-total');
+  if (elTotal) elTotal.textContent = total;
+  const elLegal = document.getElementById('analytics-legal');
+  if (elLegal) elLegal.textContent = legal;
+  const elAvg = document.getElementById('analytics-avg-days');
+  if (elAvg) elAvg.textContent = avgDays + 'd';
+
   // Trend Chart
   const byDate = {};
   records.forEach(r => { const d = (r.timestamp||'').slice(0,10); byDate[d]=(byDate[d]||0)+1; });
@@ -344,7 +356,7 @@ function buildAnalyticsCharts() {
     state.successChart = new Chart(ctx3, {
       type:'pie',
       data:{ labels, datasets:[{data:values,backgroundColor:colors,borderWidth:2,borderColor:'#111827'}]},
-      options:{ responsive:true, maintainAspectRatio: false, plugins:{legend:{position:'bottom',labels:{usePointStyle: true, color:'#5C5750',font:{family:'DM Sans',size:11},padding:14}}} }
+      options:{ responsive:true, maintainAspectRatio: false, layout:{padding:{bottom:16}}, plugins:{legend:{position:'bottom',labels:{usePointStyle: true, color:'#5C5750',font:{family:'DM Sans',size:11},padding:32}}} }
     });
   }
 }

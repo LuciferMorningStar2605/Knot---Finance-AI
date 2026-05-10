@@ -530,7 +530,30 @@
 
     <!-- ANALYTICS PAGE -->
     <section class="page" id="page-analytics">
-      <div class="analytics-grid">
+      <div class="kpi-grid" style="margin-bottom: 32px;">
+        <div class="kpi-card">
+          <div class="kpi-icon"><i class="fa-solid fa-envelope-circle-check"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Total Emails Processed</div>
+            <div class="kpi-value" id="analytics-total">—</div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Legal Interventions</div>
+            <div class="kpi-value" id="analytics-legal">—</div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon"><i class="fa-solid fa-money-bill-trend-up"></i></div>
+          <div class="kpi-body">
+            <div class="kpi-label">Avg Days Overdue</div>
+            <div class="kpi-value" id="analytics-avg-days">—</div>
+          </div>
+        </div>
+      </div>
+      <div class="analytics-grid" style="row-gap: 40px;">
         <div class="analytics-card full-width">
           <div class="bento-header">
             <span class="bento-title">Days Sales Outstanding — Volume Trend</span>
