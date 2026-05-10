@@ -84,8 +84,8 @@ function buildStageChart(dist) {
     type: 'doughnut',
     data: { labels, datasets: [{ data: values, backgroundColor: colors, borderWidth: 2, borderColor: '#111827' }] },
     options: {
-      responsive: true, maintainAspectRatio: true, cutout: '72%',
-      plugins: { legend: { position: 'bottom', labels: { color: '#5C5750', font: { family:'DM Sans',size:12 }, padding: 16 } } }
+      responsive: true, maintainAspectRatio: false, cutout: '72%',
+      plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, color: '#5C5750', font: { family:'DM Sans',size:12 }, padding: 16 } } }
     }
   });
 }
@@ -102,7 +102,7 @@ function buildGaugeChart(rate) {
         borderWidth: 0, circumference: 180, rotation: 270
       }]
     },
-    options: { responsive: true, maintainAspectRatio: true, cutout: '78%', plugins: { legend: { display: false }, tooltip: { enabled: false } } }
+    options: { responsive: true, maintainAspectRatio: false, cutout: '78%', plugins: { legend: { display: false }, tooltip: { enabled: false } } }
   });
 }
 
@@ -308,7 +308,7 @@ function buildAnalyticsCharts() {
     state.trendChart = new Chart(ctx1, {
       type:'line',
       data:{ labels:dates, datasets:[{label:'Events',data:counts,borderColor:'#C8922A',backgroundColor:'rgba(200,146,42,.10)',tension:.4,fill:true,pointRadius:4,pointBackgroundColor:'#C8922A'}]},
-      options:{ responsive:true, plugins:{legend:{display:false}}, scales:{ x:{grid:{color:'rgba(26,24,20,.05)'},ticks:{color:'#5C5750',font:{family:'DM Sans'}}}, y:{grid:{color:'rgba(26,24,20,.05)'},ticks:{color:'#5C5750',font:{family:'DM Sans'}}} } }
+      options:{ responsive:true, maintainAspectRatio: false, plugins:{legend:{display:false}}, scales:{ x:{grid:{color:'rgba(26,24,20,.05)'},ticks:{color:'#5C5750',font:{family:'DM Sans'}}}, y:{grid:{color:'rgba(26,24,20,.05)'},ticks:{color:'#5C5750',font:{family:'DM Sans'}}} } }
     });
   }
 
@@ -321,7 +321,7 @@ function buildAnalyticsCharts() {
     state.amountChart = new Chart(ctx2, {
       type:'bar',
       data:{ labels:['S1','S2','S3','S4','Legal'], datasets:[{data:[stageAmts[1]||0,stageAmts[2]||0,stageAmts[3]||0,stageAmts[4]||0,stageAmts[5]||0],backgroundColor:['#2D6A4F','#C8922A','#C0392B','#922B21','#1A1814'],borderRadius:6}]},
-      options:{ responsive:true, plugins:{legend:{display:false}}, scales:{ x:{grid:{display:false},ticks:{color:'#5C5750',font:{family:'DM Sans'}}}, y:{grid:{color:'rgba(26,24,20,.05)'},ticks:{color:'#5C5750',font:{family:'DM Sans'}}} } }
+      options:{ responsive:true, maintainAspectRatio: false, plugins:{legend:{display:false}}, scales:{ x:{grid:{display:false},ticks:{color:'#5C5750',font:{family:'DM Sans'}}}, y:{grid:{color:'rgba(26,24,20,.05)'},ticks:{color:'#5C5750',font:{family:'DM Sans'}}} } }
     });
   }
 
@@ -344,7 +344,7 @@ function buildAnalyticsCharts() {
     state.successChart = new Chart(ctx3, {
       type:'pie',
       data:{ labels, datasets:[{data:values,backgroundColor:colors,borderWidth:2,borderColor:'#111827'}]},
-      options:{ responsive:true, plugins:{legend:{position:'bottom',labels:{color:'#5C5750',font:{family:'DM Sans',size:11},padding:14}}} }
+      options:{ responsive:true, maintainAspectRatio: false, plugins:{legend:{position:'bottom',labels:{usePointStyle: true, color:'#5C5750',font:{family:'DM Sans',size:11},padding:14}}} }
     });
   }
 }

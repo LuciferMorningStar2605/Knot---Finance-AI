@@ -40,7 +40,7 @@
   --green: #2D6A4F;
   --red: #922B21;
   --yellow: #C8922A;
-  --radius: 16px;
+  --radius: 24px;
 }
 
 html, body {
@@ -88,7 +88,7 @@ html, body {
   border-bottom: 1px solid var(--border);
 }
 .brand-icon { width: 38px; height: 38px; border-radius: 10px;
-  background: var(--c-forest);
+  background: var(--c-forest); color: var(--c-white);
   display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
 }
 .brand-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; line-height: 1.1; color: var(--c-ink); }
@@ -224,6 +224,7 @@ html, body {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 .bento-chart { grid-row: span 2; }
+.chart-container { position: relative; max-height: 260px; width: 100%; display: flex; justify-content: center; }
 .bento-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
 .bento-title  { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 600; color: var(--c-ink); }
 .bento-tag    { font-size: .72rem; font-weight: 600; padding: 4px 12px; border-radius: 99px; background: var(--c-cream-3); color: var(--c-ink-2); letter-spacing: 0.1em; text-transform: uppercase; }

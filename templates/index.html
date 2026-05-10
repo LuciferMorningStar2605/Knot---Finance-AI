@@ -331,7 +331,7 @@
           <div>
             <p style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;color:#C8922A;margin:0 0 12px;">Built by</p>
             <h3 style="font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:#1A1814;margin:0 0 6px;">Namish Rathy</h3>
-            <p style="font-family:'DM Sans',sans-serif;font-size:0.92rem;color:#9B9590;margin:0;">AI Enablement Internship · Task 2 Submission · 2025</p>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.92rem;color:#9B9590;margin:0;">AI Enablement Internship · Task 2 Submission · 2026</p>
           </div>
           <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
             <a href="mailto:namishrathy26@gmail.com" class="btn-ghost" style="padding:10px 20px;">✉ &nbsp;namishrathy26@gmail.com</a>
@@ -340,7 +340,7 @@
           </div>
         </div>
         <div style="border-top:1px solid rgba(26,24,20,0.07);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;">
-          <span style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#9B9590;">Finance Credit Follow-Up Email Agent · 2025</span>
+          <span style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#9B9590;">Finance Credit Follow-Up Email Agent · 2026</span>
           <span style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#9B9590;">Groq · LangChain · Supabase · Render · GitHub Actions</span>
         </div>
       </div>
@@ -374,9 +374,9 @@
         </div>
         <div class="kpi-card">
           <div class="kpi-icon"><i class="fa-solid fa-sack-dollar"></i></div>
-          <div class="kpi-body">
+          <div class="kpi-body" style="min-width: 0;">
             <div class="kpi-label">Value at Risk</div>
-            <div class="kpi-value" id="kpi-value">—</div>
+            <div class="kpi-value" id="kpi-value" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: clamp(1.5rem, 2vw, 2.4rem);">—</div>
           </div>
         </div>
       </div>
@@ -389,7 +389,7 @@
             <span class="bento-title">Stage Distribution</span>
             <span class="bento-tag">Real-time</span>
           </div>
-          <canvas id="stageChart"></canvas>
+          <div class="chart-container"><canvas id="stageChart"></canvas></div>
         </div>
 
         <!-- Recovery Rate Gauge -->
@@ -535,19 +535,19 @@
           <div class="bento-header">
             <span class="bento-title">Days Sales Outstanding — Volume Trend</span>
           </div>
-          <canvas id="trendChart" height="90"></canvas>
+          <div class="chart-container"><canvas id="trendChart" height="90"></canvas></div>
         </div>
         <div class="analytics-card">
           <div class="bento-header">
             <span class="bento-title">Amount at Risk by Stage</span>
           </div>
-          <canvas id="amountChart"></canvas>
+          <div class="chart-container"><canvas id="amountChart"></canvas></div>
         </div>
         <div class="analytics-card">
           <div class="bento-header">
             <span class="bento-title">Communication Success Rate</span>
           </div>
-          <canvas id="successChart"></canvas>
+          <div class="chart-container"><canvas id="successChart"></canvas></div>
         </div>
       </div>
     </section>
