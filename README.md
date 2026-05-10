@@ -1,6 +1,6 @@
 # Knot — Autonomous Finance AI Agent
 
-**🔴 Live Demo:** [knot-finance-ai.onrender.com](https://knot-finance-ai.onrender.com)
+## [**CLICK HERE FOR LIVE DEMO**](https://knot-finance-ai.onrender.com)
 
 ![Knot Dashboard](https://img.shields.io/badge/Status-Production_Ready-success) ![Python](https://img.shields.io/badge/Python-3.11-blue) ![Flask](https://img.shields.io/badge/Flask-Headless_API-black) ![LLaMA 3](https://img.shields.io/badge/LLM-Llama_3.1_70B-orange) ![Supabase](https://img.shields.io/badge/Database-Supabase-green)
 
@@ -8,7 +8,7 @@ Knot is an **autonomous, fail-safe credit collections platform** designed for en
 
 ---
 
-## 📖 Table of Contents
+## Table of Contents
 - [Project Overview](#project-overview)
 - [Agent Architecture Diagram](#agent-architecture-diagram)
 - [Process Flow](#process-flow)
@@ -20,7 +20,7 @@ Knot is an **autonomous, fail-safe credit collections platform** designed for en
 
 ---
 
-## 🎯 Project Overview
+## Project Overview
 Finance teams spend hours chasing payments. Most follow-ups are inconsistent in tone, sent too late — or never sent at all. 
 
 Knot acts as a digital collections agent. It scans a list of outstanding invoices, automatically detects which clients are overdue, maps the overdue days to a specific **Escalation Stage**, and triggers a large language model to write the perfect email. Everything is completely audit-logged, and the solution requires zero recurring cloud costs beyond standard hosting.
@@ -32,7 +32,7 @@ Knot acts as a digital collections agent. It scans a list of outstanding invoice
 
 ---
 
-## 🧠 Agent Architecture Diagram
+## Agent Architecture Diagram
 
 ```mermaid
 graph TD
@@ -63,7 +63,7 @@ graph TD
 
 ---
 
-## ⚙️ Process Flow
+## Process Flow
 
 1. **Upload Your Invoice Data**: Drop a CSV or Excel file via the UI or API. The agent validates every field using Pydantic.
 2. **Auto-Detect Overdue Records**: The trigger engine calculates days overdue for every invoice and maps each record to its exact escalation stage.
@@ -72,7 +72,7 @@ graph TD
 
 ---
 
-## 🛠️ Tech Stack & Rationale
+## Tech Stack & Rationale
 
 Every component was chosen for **zero operational cost** and **maximum production reliability**.
 
@@ -87,7 +87,7 @@ Every component was chosen for **zero operational cost** and **maximum productio
 
 ---
 
-## 🔒 Security Mitigations
+## Security Mitigations
 
 Finance data deserves the highest respect. Knot implements defense-in-depth:
 
@@ -100,7 +100,7 @@ Finance data deserves the highest respect. Knot implements defense-in-depth:
 
 ---
 
-## 📊 Sample Outputs & Results
+## Sample Outputs & Results
 
 ### Tone Examples by Stage
 
@@ -115,7 +115,7 @@ The native dashboard tracks:
 
 ---
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### Prerequisites
 - Python 3.11+
@@ -159,7 +159,7 @@ The native dashboard tracks:
 
 ---
 
-## 🔮 Future Works
+## Future Works
 1. **Multi-Channel Orchestration**: Add Twilio integration to automatically trigger SMS reminders for Stage 3 accounts.
 2. **Payment Gateway Webhooks**: Integrate Stripe/Razorpay to automatically mark invoices as `RESOLVED` the moment a transaction clears.
 3. **Conversational Negotiation Agent**: Upgrade the system from a static email-sender to an active LangGraph agent capable of negotiating payment plans and answering client queries over email threads.
