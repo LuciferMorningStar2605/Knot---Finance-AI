@@ -1,5 +1,7 @@
 # Knot — Autonomous Finance AI Agent
 
+**🔴 Live Demo:** [knot-finance-ai.onrender.com](https://knot-finance-ai.onrender.com)
+
 ![Knot Dashboard](https://img.shields.io/badge/Status-Production_Ready-success) ![Python](https://img.shields.io/badge/Python-3.11-blue) ![Flask](https://img.shields.io/badge/Flask-Headless_API-black) ![LLaMA 3](https://img.shields.io/badge/LLM-Llama_3.1_70B-orange) ![Supabase](https://img.shields.io/badge/Database-Supabase-green)
 
 Knot is an **autonomous, fail-safe credit collections platform** designed for enterprise finance teams. It dramatically reduces Days Sales Outstanding (DSO) by analyzing delinquent invoices, mapping them to intelligent escalation stages, and generating context-aware follow-ups without manual intervention.
