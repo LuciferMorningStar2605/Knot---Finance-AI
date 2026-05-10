@@ -7,7 +7,7 @@
   <meta name="description" content="AI-powered credit collections and invoice recovery system for enterprise finance teams." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -107,59 +107,242 @@
     <!-- ─── PAGES CONTAINER ─── -->
 
     <!-- HOMEPAGE -->
-    <section class="page active" id="page-home">
-      <div class="home-container" style="max-width: 1200px; margin: 0 auto;">
-        <!-- Hero Section -->
-        <div class="home-hero" style="text-align: center; padding: 80px 20px 60px; margin-bottom: 60px;">
-          <div class="hero-badge" style="display: inline-block; padding: 8px 20px; background: #ffffff; color: #0f172a; border-radius: 100px; font-weight: 600; font-size: 0.9rem; margin-bottom: 32px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">✨ Finance AI Agent v2.0</div>
-          <h1 class="hero-title" style="font-size: 4.5rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 32px; color: #0f172a;">Recover capital with <br/><span style="color: #94a3b8;">intelligent automation.</span></h1>
-          <p class="hero-subtitle" style="font-size: 1.25rem; color: #475569; max-width: 650px; margin: 0 auto 40px; line-height: 1.6;">Knot is an autonomous, fail-safe credit collections platform designed for enterprise finance teams. It dramatically reduces DSO by analyzing delinquent invoices and generating context-aware follow-ups.</p>
-          <div class="hero-actions" style="display: flex; gap: 16px; justify-content: center;">
-            <button class="btn-primary" onclick="document.querySelector('[data-page=dashboard]').click()" style="padding: 16px 32px; font-size: 1.1rem; border-radius: 100px; background: #0f172a; color: white; font-weight: 600; border: none; cursor: pointer; transition: transform 0.2s;">
-              Launch Dashboard <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
-            </button>
-            <button class="btn-ghost" onclick="document.querySelector('[data-page=collections]').click()" style="padding: 16px 32px; font-size: 1.1rem; border-radius: 100px; font-weight: 600; border: 1px solid #e2e8f0; color: #0f172a; background: white; cursor: pointer; transition: background 0.2s;">
-              Upload Invoices
-            </button>
+    <section class="page active" id="page-home" style="padding: 0; background: #FAF8F4;">
+      
+      <!-- Hero Section -->
+      <div class="landing-hero" style="
+        background: linear-gradient(145deg, #FAF8F4 0%, #F4F1EB 55%, #EDE9E0 100%);
+        padding: 96px 80px 80px;
+        position: relative;
+        overflow: hidden;
+        min-height: 88vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      ">
+        <div style="position:absolute;top:-100px;right:-100px;width:480px;height:480px;
+          background:radial-gradient(circle,rgba(200,146,42,0.11) 0%,transparent 68%);
+          border-radius:50%;pointer-events:none;"></div>
+        <div style="position:absolute;bottom:-80px;left:-80px;width:340px;height:340px;
+          background:radial-gradient(circle,rgba(45,106,79,0.09) 0%,transparent 68%);
+          border-radius:50%;pointer-events:none;"></div>
+        
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.72rem;
+          font-weight:600;letter-spacing:0.16em;text-transform:uppercase;
+          color:#C8922A;margin:0 0 22px;">
+          AI Enablement Internship &nbsp;·&nbsp; Task 2 &nbsp;·&nbsp; Finance Agent
+        </p>
+        <h1 style="font-family:'Playfair Display',Georgia,serif;
+          font-size:clamp(3rem,6.5vw,5.8rem);font-weight:700;line-height:1.05;
+          letter-spacing:-0.028em;color:#1A1814;max-width:760px;margin:0 0 30px;">
+          Finance follows up.<br>
+          <span style="font-style:italic;color:#C8922A;">Automatically.</span>
+        </h1>
+        <p style="font-family:'DM Sans',sans-serif;font-size:1.18rem;
+          line-height:1.75;color:#5C5750;max-width:540px;margin:0 0 52px;">
+          An AI agent that scans overdue invoices, writes perfectly-toned follow-up 
+          emails at every escalation stage, and logs everything to the cloud — 
+          automatically, every morning.
+        </p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:72px;">
+          <button class="btn-primary" onclick="document.querySelector('[data-page=dashboard]').click()" style="padding:14px 30px;">
+            Upload Invoices &nbsp;→
+          </button>
+          <a href="https://github.com/LuciferMorningStar2605/Knot---Finance-AI" target="_blank" class="btn-ghost" style="padding:14px 24px;">
+            View on GitHub
+          </a>
+        </div>
+        
+        <div style="display:flex;gap:0;flex-wrap:wrap;border-top:1px solid rgba(26,24,20,0.09);padding-top:44px;">
+          <div style="padding-right:48px;border-right:1px solid rgba(26,24,20,0.09);margin-right:48px;">
+            <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:#1A1814;line-height:1;">5</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9B9590;margin-top:6px;">Escalation Stages</div>
+          </div>
+          <div style="padding-right:48px;border-right:1px solid rgba(26,24,20,0.09);margin-right:48px;">
+            <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:#1A1814;line-height:1;">₹0</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9B9590;margin-top:6px;">API Cost</div>
+          </div>
+          <div style="padding-right:48px;border-right:1px solid rgba(26,24,20,0.09);margin-right:48px;">
+            <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:#1A1814;line-height:1;">100%</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9B9590;margin-top:6px;">Audit Logged</div>
+          </div>
+          <div>
+            <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:#1A1814;line-height:1;">Daily</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9B9590;margin-top:6px;">Auto-Scheduled</div>
           </div>
         </div>
+      </div>
 
-        <!-- Project Overview & Tech Stack -->
-        <div class="home-about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 60px;">
-          
-          <div class="about-card" style="background: #ffffff; border: 1px solid #e2e8f0; padding: 48px; border-radius: 32px; box-shadow: 0 4px 20px -2px rgba(0,0,0,0.02);">
-            <h3 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 20px; color: #0f172a; display: flex; align-items: center; gap: 12px;"><div style="width: 40px; height: 40px; background: #f1f5f9; border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-layer-group" style="color:#0f172a;"></i></div> Architecture</h3>
-            <p style="color: #475569; margin-bottom: 32px; line-height: 1.6; font-size: 1.1rem;">Built to meet enterprise production standards, Knot replaces fragile, monolithic dashboards with a robust headless REST API architecture. It integrates a <strong>Smart-Retry LLM Engine</strong> to sanitize outputs and ensure zero hallucinations.</p>
-            <ul class="feature-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px;">
-              <li style="display: flex; align-items: center; gap: 16px; color: #0f172a; font-weight: 500;"><i class="fa-solid fa-check" style="color: #0f172a; background: #f1f5f9; padding: 4px; border-radius: 50%; font-size: 0.8rem;"></i> Flask, SQLAlchemy, PostgreSQL</li>
-              <li style="display: flex; align-items: center; gap: 16px; color: #0f172a; font-weight: 500;"><i class="fa-solid fa-check" style="color: #0f172a; background: #f1f5f9; padding: 4px; border-radius: 50%; font-size: 0.8rem;"></i> Llama-3.3 70B & Mixtral 8x7B</li>
-              <li style="display: flex; align-items: center; gap: 16px; color: #0f172a; font-weight: 500;"><i class="fa-solid fa-check" style="color: #0f172a; background: #f1f5f9; padding: 4px; border-radius: 50%; font-size: 0.8rem;"></i> Pydantic structured validation</li>
-              <li style="display: flex; align-items: center; gap: 16px; color: #0f172a; font-weight: 500;"><i class="fa-solid fa-check" style="color: #0f172a; background: #f1f5f9; padding: 4px; border-radius: 50%; font-size: 0.8rem;"></i> Vanilla JS SPA + Tailwind CSS</li>
-            </ul>
+      <!-- Problem Quote -->
+      <div style="background:#1A1814;padding:80px;text-align:center;">
+        <p style="font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2.2rem);color:#FAF8F4;font-style:italic;font-weight:400;max-width:680px;margin:0 auto;line-height:1.55;">
+          "Finance teams spend hours chasing payments. Most follow-ups are inconsistent in tone, sent too late — or never sent at all."
+        </p>
+        <div style="width:36px;height:2px;background:#C8922A;margin:36px auto 0;border-radius:2px;"></div>
+      </div>
+
+      <!-- How it Works -->
+      <div style="padding:100px 80px;background:#FAF8F4;">
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#C8922A;margin:0 0 14px;">How It Works</p>
+        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.8vw,3rem);font-weight:600;color:#1A1814;max-width:480px;margin:0 0 64px;line-height:1.2;">From invoice to inbox — in seconds.</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:920px;border-radius:24px;overflow:hidden;">
+          <div style="background:#F4F1EB;padding:52px 48px;">
+            <div style="font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:rgba(26,24,20,0.08);line-height:1;margin-bottom:20px;">01</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;color:#1A1814;margin:0 0 12px;">Upload Your Invoice Data</h3>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.93rem;color:#5C5750;line-height:1.75;margin:0;">Drop a CSV or Excel file with your outstanding invoices. The agent validates every field using Pydantic — bad rows are rejected, not silently ignored.</p>
           </div>
-
-          <div class="about-card" style="background: #ffffff; border: 1px solid #e2e8f0; padding: 48px; border-radius: 32px; box-shadow: 0 4px 20px -2px rgba(0,0,0,0.02);">
-            <h3 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 20px; color: #0f172a; display: flex; align-items: center; gap: 12px;"><div style="width: 40px; height: 40px; background: #f1f5f9; border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-bullseye" style="color:#0f172a;"></i></div> Advantages</h3>
-            <p style="color: #475569; margin-bottom: 32px; line-height: 1.6; font-size: 1.1rem;">Designed for high-volume B2B collections, Knot allows finance managers to scale their recovery efforts without scaling their headcount.</p>
-            <ul class="feature-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px;">
-              <li style="display: flex; align-items: flex-start; gap: 16px; color: #0f172a;"><i class="fa-solid fa-bolt" style="color: #0f172a; background: #f1f5f9; padding: 4px; border-radius: 50%; font-size: 0.8rem; margin-top:2px;"></i> <div><strong style="display:block; margin-bottom:4px;">0% Failure Logic</strong> Gracefully handles LLM downtime and parsing errors without crashing.</div></li>
-              <li style="display: flex; align-items: flex-start; gap: 16px; color: #0f172a;"><i class="fa-solid fa-shield-halved" style="color: #0f172a; background: #f1f5f9; padding: 4px; border-radius: 50%; font-size: 0.8rem; margin-top:2px;"></i> <div><strong style="display:block; margin-bottom:4px;">Immutable Audit Trail</strong> Every action, legal flag, and AI generation is permanently logged.</div></li>
-              <li style="display: flex; align-items: flex-start; gap: 16px; color: #0f172a;"><i class="fa-solid fa-file-export" style="color: #0f172a; background: #f1f5f9; padding: 4px; border-radius: 50%; font-size: 0.8rem; margin-top:2px;"></i> <div><strong style="display:block; margin-bottom:4px;">Board-Ready Reports</strong> Instant PDF, Word, and highly-formatted Excel exports.</div></li>
-            </ul>
+          <div style="background:#EDE9E0;padding:52px 48px;">
+            <div style="font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:rgba(26,24,20,0.08);line-height:1;margin-bottom:20px;">02</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;color:#1A1814;margin:0 0 12px;">Auto-Detect Overdue Records</h3>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.93rem;color:#5C5750;line-height:1.75;margin:0;">The trigger engine calculates days overdue for every invoice and maps each record to its exact escalation stage — Stage 1 through 4, or Legal Flag for 30+ days.</p>
+          </div>
+          <div style="background:#EDE9E0;padding:52px 48px;">
+            <div style="font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:rgba(26,24,20,0.08);line-height:1;margin-bottom:20px;">03</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;color:#1A1814;margin:0 0 12px;">LLM Writes the Perfect Email</h3>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.93rem;color:#5C5750;line-height:1.75;margin:0;">Llama 3.1 70B via Groq generates a fully personalised, professional email — right tone, right urgency, all six required fields present and validated by Pydantic before send.</p>
+          </div>
+          <div style="background:#F4F1EB;padding:52px 48px;">
+            <div style="font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:rgba(26,24,20,0.08);line-height:1;margin-bottom:20px;">04</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;color:#1A1814;margin:0 0 12px;">Send, Log & Escalate</h3>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.93rem;color:#5C5750;line-height:1.75;margin:0;">Emails are sent via SMTP or dry-run logged to JSON. Every action is audit-trailed in Supabase. 30+ day accounts are flagged for legal review — no email sent automatically.</p>
           </div>
         </div>
+      </div>
 
-        <!-- Contact Section -->
-        <div style="background: #0f172a; padding: 48px; border-radius: 32px; text-align: center; margin-bottom: 60px;">
-          <h3 style="font-size: 2rem; color: #ffffff; margin-bottom: 16px; font-weight: 700;">Get In Touch</h3>
-          <p style="color: #94a3b8; margin-bottom: 32px; font-size: 1.1rem;">For deployment inquiries or to discuss this project, reach out below.</p>
-          <div style="display: flex; justify-content: center; gap: 32px;">
-            <a href="mailto:namishrathy26@gmail.com" target="_blank" style="color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 1.1rem; padding: 12px 24px; background: rgba(255,255,255,0.1); border-radius: 100px; transition: background 0.2s;"><i class="fa-solid fa-envelope"></i> Email</a>
-            <a href="https://www.linkedin.com/in/namish-rathy/" target="_blank" style="color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 1.1rem; padding: 12px 24px; background: rgba(255,255,255,0.1); border-radius: 100px; transition: background 0.2s;"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-            <a href="https://github.com/LuciferMorningStar2605" target="_blank" style="color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 1.1rem; padding: 12px 24px; background: rgba(255,255,255,0.1); border-radius: 100px; transition: background 0.2s;"><i class="fa-brands fa-github"></i> GitHub</a>
+      <!-- Escalation Engine -->
+      <div style="padding:100px 80px;background:#FFFFFF;border-top:1px solid rgba(26,24,20,0.07);">
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#C8922A;margin:0 0 14px;">Escalation Engine</p>
+        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;color:#1A1814;margin:0 0 14px;">The right tone, every time.</h2>
+        <p style="font-family:'DM Sans',sans-serif;font-size:1rem;color:#5C5750;max-width:500px;margin:0 0 52px;line-height:1.75;">Five stages. Each one calibrated. The agent knows exactly when to be warm, when to be firm, and when to hand it to legal — no manual decision required.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:155px;background:#D4EDE3;border-radius:18px;padding:28px 22px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.66rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1B4332;margin-bottom:10px;">Stage 1 · 1–7 days</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:#1B4332;margin-bottom:10px;">Warm & Friendly</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.83rem;color:#2D6A4F;line-height:1.6;">Gentle reminder. Assumes the invoice was simply overlooked. Pay now link included.</div>
+          </div>
+          <div style="flex:1;min-width:155px;background:#FEF3C7;border-radius:18px;padding:28px 22px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.66rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#92400E;margin-bottom:10px;">Stage 2 · 8–14 days</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:#92400E;margin-bottom:10px;">Polite but Firm</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.83rem;color:#B45309;line-height:1.6;">Payment still outstanding. Requests a specific confirmation date from the client.</div>
+          </div>
+          <div style="flex:1;min-width:155px;background:#FDEBD0;border-radius:18px;padding:28px 22px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.66rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C0392B;margin-bottom:10px;">Stage 3 · 15–21 days</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:#C0392B;margin-bottom:10px;">Formal & Serious</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.83rem;color:#C0392B;line-height:1.6;">Credit terms at risk. 48-hour deadline to respond or make payment.</div>
+          </div>
+          <div style="flex:1;min-width:155px;background:#FDECEA;border-radius:18px;padding:28px 22px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.66rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#922B21;margin-bottom:10px;">Stage 4 · 22–30 days</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:#922B21;margin-bottom:10px;">Stern & Urgent</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.83rem;color:#922B21;line-height:1.6;">Final notice. Pay within 24 hours or collections team is escalated.</div>
+          </div>
+          <div style="flex:1;min-width:155px;background:#1A1814;border-radius:18px;padding:28px 22px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.66rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9B9590;margin-bottom:10px;">Escalation · 30+ days</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:#FAF8F4;margin-bottom:10px;">Legal Review</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.83rem;color:#9B9590;line-height:1.6;">No email sent. Flagged in Supabase. Finance manager assigned for direct contact.</div>
           </div>
         </div>
+      </div>
 
+      <!-- Tech Stack -->
+      <div style="padding:100px 80px;background:#FAF8F4;border-top:1px solid rgba(26,24,20,0.07);">
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#C8922A;margin:0 0 14px;">Under the Hood</p>
+        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;color:#1A1814;margin:0 0 52px;">Built on a free, production-grade stack.</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+          <div>
+            <p style="font-family:'DM Sans',sans-serif;font-size:1.04rem;color:#5C5750;line-height:1.8;margin:0 0 22px;">Every component was chosen for zero operational cost and maximum production reliability. Groq's free tier gives 6,000 requests/day at ~500 tokens/second. Supabase persists audit data across every Render redeploy. GitHub Actions schedules the daily morning scan — completely free.</p>
+            <p style="font-family:'DM Sans',sans-serif;font-size:1.04rem;color:#5C5750;line-height:1.8;margin:0;">The architecture is designed to scale without code changes — swap any layer by updating a single environment variable.</p>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div style="background:#FFFFFF;border:1px solid rgba(26,24,20,0.08);border-radius:16px;padding:24px;">
+              <div style="font-size:1.6rem;margin-bottom:10px;">🤖</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#9B9590;margin-bottom:5px;">LLM</div>
+              <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:#1A1814;margin-bottom:4px;">Llama 3.1 70B</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#9B9590;">Groq API · Free tier</div>
+            </div>
+            <div style="background:#FFFFFF;border:1px solid rgba(26,24,20,0.08);border-radius:16px;padding:24px;">
+              <div style="font-size:1.6rem;margin-bottom:10px;">🔗</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#9B9590;margin-bottom:5px;">Framework</div>
+              <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:#1A1814;margin-bottom:4px;">LangChain LCEL</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#9B9590;">Plan-and-Execute</div>
+            </div>
+            <div style="background:#FFFFFF;border:1px solid rgba(26,24,20,0.08);border-radius:16px;padding:24px;">
+              <div style="font-size:1.6rem;margin-bottom:10px;">🗄️</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#9B9590;margin-bottom:5px;">Database</div>
+              <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:#1A1814;margin-bottom:4px;">Supabase</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#9B9590;">PostgreSQL · Free 500MB</div>
+            </div>
+            <div style="background:#FFFFFF;border:1px solid rgba(26,24,20,0.08);border-radius:16px;padding:24px;">
+              <div style="font-size:1.6rem;margin-bottom:10px;">⏰</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#9B9590;margin-bottom:5px;">Scheduling</div>
+              <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:#1A1814;margin-bottom:4px;">GitHub Actions</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#9B9590;">Cron · 9AM IST weekdays</div>
+            </div>
+            <div style="background:#FFFFFF;border:1px solid rgba(26,24,20,0.08);border-radius:16px;padding:24px;">
+              <div style="font-size:1.6rem;margin-bottom:10px;">🚀</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#9B9590;margin-bottom:5px;">Hosting</div>
+              <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:#1A1814;margin-bottom:4px;">Render</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#9B9590;">Streamlit · Free tier</div>
+            </div>
+            <div style="background:#FFFFFF;border:1px solid rgba(26,24,20,0.08);border-radius:16px;padding:24px;">
+              <div style="font-size:1.6rem;margin-bottom:10px;">🛡️</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#9B9590;margin-bottom:5px;">Validation</div>
+              <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:#1A1814;margin-bottom:4px;">Pydantic v2</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#9B9590;">Structured LLM output</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Security -->
+      <div style="padding:80px;background:#F4F1EB;border-top:1px solid rgba(26,24,20,0.07);">
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#C8922A;margin:0 0 14px;">Security</p>
+        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:600;color:#1A1814;margin:0 0 48px;">Finance data deserves respect.</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:28px;">
+          <div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:700;color:#2D6A4F;text-transform:uppercase;letter-spacing:0.09em;margin-bottom:8px;">✓ &nbsp;Prompt Injection</div>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.88rem;color:#5C5750;line-height:1.65;margin:0;">Input sanitisation strips injection patterns before data reaches the LLM.</p>
+          </div>
+          <div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:700;color:#2D6A4F;text-transform:uppercase;letter-spacing:0.09em;margin-bottom:8px;">✓ &nbsp;PII Protection</div>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.88rem;color:#5C5750;line-height:1.65;margin:0;">Client emails masked in all logs. Supabase row-level security enabled.</p>
+          </div>
+          <div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:700;color:#2D6A4F;text-transform:uppercase;letter-spacing:0.09em;margin-bottom:8px;">✓ &nbsp;No Key Leaks</div>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.88rem;color:#5C5750;line-height:1.65;margin:0;">All credentials via .env. Render env vars. Never committed to source.</p>
+          </div>
+          <div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:700;color:#2D6A4F;text-transform:uppercase;letter-spacing:0.09em;margin-bottom:8px;">✓ &nbsp;Hallucination Guard</div>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.88rem;color:#5C5750;line-height:1.65;margin:0;">Pydantic validates all 6 required fields are present. Email blocked if any missing.</p>
+          </div>
+          <div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:700;color:#2D6A4F;text-transform:uppercase;letter-spacing:0.09em;margin-bottom:8px;">✓ &nbsp;Safe by Default</div>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.88rem;color:#5C5750;line-height:1.65;margin:0;">DRY_RUN_MODE=true by default. No real emails ever sent without explicit opt-in.</p>
+          </div>
+          <div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:700;color:#2D6A4F;text-transform:uppercase;letter-spacing:0.09em;margin-bottom:8px;">✓ &nbsp;Trigger Auth</div>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.88rem;color:#5C5750;line-height:1.65;margin:0;">GitHub Actions uses a secret header. Unauthenticated /run-agent calls rejected.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div style="padding:72px 80px 56px;background:#FAF8F4;border-top:1px solid rgba(26,24,20,0.09);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:36px;margin-bottom:44px;">
+          <div>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;color:#C8922A;margin:0 0 12px;">Built by</p>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:#1A1814;margin:0 0 6px;">Namish Rathy</h3>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.92rem;color:#9B9590;margin:0;">AI Enablement Internship · Task 2 Submission · 2025</p>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+            <a href="mailto:namishrathy26@gmail.com" class="btn-ghost" style="padding:10px 20px;">✉ &nbsp;namishrathy26@gmail.com</a>
+            <a href="https://www.linkedin.com/in/namish-rathy/" target="_blank" class="btn-ghost" style="padding:10px 20px;">in &nbsp;LinkedIn</a>
+            <a href="https://github.com/LuciferMorningStar2605" target="_blank" class="btn-primary" style="padding:10px 20px; background:#1A1814; color:#FAF8F4; border-radius:100px;">GitHub &nbsp;↗</a>
+          </div>
+        </div>
+        <div style="border-top:1px solid rgba(26,24,20,0.07);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+          <span style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#9B9590;">Finance Credit Follow-Up Email Agent · 2025</span>
+          <span style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#9B9590;">Groq · LangChain · Supabase · Render · GitHub Actions</span>
+        </div>
       </div>
     </section>
 
@@ -167,7 +350,7 @@
     <section class="page" id="page-dashboard">
       <!-- KPI CARDS -->
       <div class="kpi-grid">
-        <div class="kpi-card purple">
+        <div class="kpi-card">
           <div class="kpi-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
           <div class="kpi-body">
             <div class="kpi-label">Total Invoices</div>
@@ -175,21 +358,21 @@
           </div>
           <div class="kpi-spark"></div>
         </div>
-        <div class="kpi-card blue">
+        <div class="kpi-card">
           <div class="kpi-icon"><i class="fa-solid fa-paper-plane"></i></div>
           <div class="kpi-body">
             <div class="kpi-label">Follow-ups Sent</div>
             <div class="kpi-value" id="kpi-sent">—</div>
           </div>
         </div>
-        <div class="kpi-card red">
+        <div class="kpi-card">
           <div class="kpi-icon"><i class="fa-solid fa-gavel"></i></div>
           <div class="kpi-body">
             <div class="kpi-label">Legal Escalations</div>
             <div class="kpi-value" id="kpi-legal">—</div>
           </div>
         </div>
-        <div class="kpi-card green">
+        <div class="kpi-card">
           <div class="kpi-icon"><i class="fa-solid fa-sack-dollar"></i></div>
           <div class="kpi-body">
             <div class="kpi-label">Value at Risk</div>

@@ -77,7 +77,7 @@ function buildStageChart(dist) {
   const ctx = document.getElementById('stageChart').getContext('2d');
   const labels = ['Stage 1\nFriendly','Stage 2\nFirm','Stage 3\nSerious','Stage 4\nFinal','Legal'];
   const values = [dist['1']||0, dist['2']||0, dist['3']||0, dist['4']||0, dist['5']||0];
-  const colors = ['#22c55e','#84cc16','#f59e0b','#f97316','#ef4444'];
+  const colors = ['#2D6A4F','#C8922A','#C0392B','#922B21','#1A1814'];
 
   if (state.stageChart) state.stageChart.destroy();
   state.stageChart = new Chart(ctx, {
@@ -85,7 +85,7 @@ function buildStageChart(dist) {
     data: { labels, datasets: [{ data: values, backgroundColor: colors, borderWidth: 2, borderColor: '#111827' }] },
     options: {
       responsive: true, maintainAspectRatio: true, cutout: '72%',
-      plugins: { legend: { position: 'bottom', labels: { color: '#6b7a99', font: { family:'Outfit',size:12 }, padding: 16 } } }
+      plugins: { legend: { position: 'bottom', labels: { color: '#5C5750', font: { family:'DM Sans',size:12 }, padding: 16 } } }
     }
   });
 }
@@ -98,7 +98,7 @@ function buildGaugeChart(rate) {
     data: {
       datasets: [{
         data: [rate, 100 - rate],
-        backgroundColor: ['#4f8eff','#1a2235'],
+        backgroundColor: ['#2D6A4F','#F4F1EB'],
         borderWidth: 0, circumference: 180, rotation: 270
       }]
     },
@@ -147,7 +147,7 @@ function renderInvoiceTable(rows) {
       <td><b>${r.invoice_no}</b></td>
       <td>${r.client_name}</td>
       <td>₹${Number(r.amount_due).toLocaleString('en-IN')}</td>
-      <td><span style="color:${r.days_overdue>30?'#ef4444':r.days_overdue>21?'#f97316':r.days_overdue>14?'#f59e0b':'#22c55e'}">${r.days_overdue}d</span></td>
+      <td><span style="color:${r.days_overdue>30?'#1A1814':r.days_overdue>21?'#922B21':r.days_overdue>14?'#C0392B':'#C8922A'}">${r.days_overdue}d</span></td>
       <td>${stageBadge(r.stage)}</td>
       <td>${statusPill(r.send_status)}</td>
       <td style="display:flex;gap:6px;">
@@ -307,8 +307,8 @@ function buildAnalyticsCharts() {
     if (state.trendChart) state.trendChart.destroy();
     state.trendChart = new Chart(ctx1, {
       type:'line',
-      data:{ labels:dates, datasets:[{label:'Events',data:counts,borderColor:'#4f8eff',backgroundColor:'rgba(79,142,255,.08)',tension:.4,fill:true,pointRadius:4,pointBackgroundColor:'#4f8eff'}]},
-      options:{ responsive:true, plugins:{legend:{display:false}}, scales:{ x:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#6b7a99',font:{family:'Outfit'}}}, y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#6b7a99',font:{family:'Outfit'}}} } }
+      data:{ labels:dates, datasets:[{label:'Events',data:counts,borderColor:'#C8922A',backgroundColor:'rgba(200,146,42,.10)',tension:.4,fill:true,pointRadius:4,pointBackgroundColor:'#C8922A'}]},
+      options:{ responsive:true, plugins:{legend:{display:false}}, scales:{ x:{grid:{color:'rgba(26,24,20,.05)'},ticks:{color:'#5C5750',font:{family:'DM Sans'}}}, y:{grid:{color:'rgba(26,24,20,.05)'},ticks:{color:'#5C5750',font:{family:'DM Sans'}}} } }
     });
   }
 
@@ -320,8 +320,8 @@ function buildAnalyticsCharts() {
     if (state.amountChart) state.amountChart.destroy();
     state.amountChart = new Chart(ctx2, {
       type:'bar',
-      data:{ labels:['S1','S2','S3','S4','Legal'], datasets:[{data:[stageAmts[1]||0,stageAmts[2]||0,stageAmts[3]||0,stageAmts[4]||0,stageAmts[5]||0],backgroundColor:['#22c55e','#84cc16','#f59e0b','#f97316','#ef4444'],borderRadius:6}]},
-      options:{ responsive:true, plugins:{legend:{display:false}}, scales:{ x:{grid:{display:false},ticks:{color:'#6b7a99',font:{family:'Outfit'}}}, y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#6b7a99',font:{family:'Outfit'}}} } }
+      data:{ labels:['S1','S2','S3','S4','Legal'], datasets:[{data:[stageAmts[1]||0,stageAmts[2]||0,stageAmts[3]||0,stageAmts[4]||0,stageAmts[5]||0],backgroundColor:['#2D6A4F','#C8922A','#C0392B','#922B21','#1A1814'],borderRadius:6}]},
+      options:{ responsive:true, plugins:{legend:{display:false}}, scales:{ x:{grid:{display:false},ticks:{color:'#5C5750',font:{family:'DM Sans'}}}, y:{grid:{color:'rgba(26,24,20,.05)'},ticks:{color:'#5C5750',font:{family:'DM Sans'}}} } }
     });
   }
 
@@ -334,17 +334,17 @@ function buildAnalyticsCharts() {
     const labels = Object.keys(statusCounts).map(k => k.replace(/_/g,' '));
     const values = Object.values(statusCounts);
     const colors = Object.keys(statusCounts).map(k => {
-      if(k === 'SENT') return '#22c55e'; // Green
-      if(k === 'DRY_RUN_LOGGED') return '#4f8eff'; // Blue
-      if(k === 'LEGAL_ESCALATION') return '#ef4444'; // Red
-      if(k === 'RESOLVED') return '#94a3b8'; // Slate/Grey
-      if(k === 'GENERATION_FAILED') return '#f59e0b'; // Orange
-      return '#6b7a99';
+      if(k === 'SENT') return '#2D6A4F';
+      if(k === 'DRY_RUN_LOGGED') return '#C8922A';
+      if(k === 'LEGAL_ESCALATION') return '#1A1814';
+      if(k === 'RESOLVED') return '#9B9590';
+      if(k === 'GENERATION_FAILED') return '#922B21';
+      return '#5C5750';
     });
     state.successChart = new Chart(ctx3, {
       type:'pie',
       data:{ labels, datasets:[{data:values,backgroundColor:colors,borderWidth:2,borderColor:'#111827'}]},
-      options:{ responsive:true, plugins:{legend:{position:'bottom',labels:{color:'#6b7a99',font:{family:'Outfit',size:11},padding:14}}} }
+      options:{ responsive:true, plugins:{legend:{position:'bottom',labels:{color:'#5C5750',font:{family:'DM Sans',size:11},padding:14}}} }
     });
   }
 }
