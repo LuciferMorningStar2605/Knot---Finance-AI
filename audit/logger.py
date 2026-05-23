@@ -45,11 +45,43 @@ if db_url and "?" in db_url:
     # Supabase connection poolers append ?pgbouncer=true which psycopg2 rejects
     db_url = db_url.split("?")[0]
 
-engine = create_engine(db_url)
+try:
+    engine = create_engine(db_url)
+except Exception as import_err:
+    logger.error(f"Failed to create engine for database URL: {import_err}. Falling back to SQLite.")
+    fallback_url = f"sqlite:///{settings.AUDIT_DB_PATH}"
+    engine = create_engine(fallback_url)
+    db_url = fallback_url
+
 Session = sessionmaker(bind=engine)
 
 def init_db():
-    Base.metadata.create_all(engine)
+    global engine, Session
+    try:
+        # Create output directory for sqlite if that's what we are using initially
+        if db_url.startswith("sqlite:///"):
+            os.makedirs(os.path.dirname(settings.AUDIT_DB_PATH), exist_ok=True)
+        
+        # Test connection by creating tables
+        Base.metadata.create_all(engine)
+        logger.info("Successfully connected to primary database and created tables.")
+    except Exception as e:
+        logger.error(f"Failed to initialize primary database ({db_url}): {e}")
+        # If the primary is already sqlite, we can't fall back further
+        if db_url.startswith("sqlite:///"):
+            raise e
+            
+        logger.info("Falling back to local SQLite database...")
+        fallback_url = f"sqlite:///{settings.AUDIT_DB_PATH}"
+        os.makedirs(os.path.dirname(settings.AUDIT_DB_PATH), exist_ok=True)
+        engine = create_engine(fallback_url)
+        Session.configure(bind=engine)
+        try:
+            Base.metadata.create_all(engine)
+            logger.info(f"Fallback SQLite database successfully initialized at {settings.AUDIT_DB_PATH}")
+        except Exception as fallback_err:
+            logger.error(f"Failed to initialize fallback database: {fallback_err}")
+            raise fallback_err
 
 def log_event(task: EscalationTask, email: Optional[GeneratedEmail] = None, 
               send_status: str = "PENDING", error: Optional[str] = None, run_id: Optional[str] = None):
