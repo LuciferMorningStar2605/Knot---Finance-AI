@@ -48,7 +48,10 @@ graph TD
     F -->|22-30 Days| G4[Stage 4: Stern Final Notice]
     F -->|30+ Days| G5[Stage 5: Legal Review - NO EMAIL]
     
-    G1 & G2 & G3 & G4 --> H[LangChain LCEL Pipeline]
+    G1 --> H[LangChain LCEL Pipeline]
+    G2 --> H
+    G3 --> H
+    G4 --> H
     H --> I[Groq API: LLaMA 3.1 70B]
     I --> J{Output Validation}
     
@@ -56,9 +59,10 @@ graph TD
     K --> I
     J -->|Pass| L[Dry Run / SMTP Send]
     
-    G5 --> M[Flag in Database]
-    L --> M[Log Event to Supabase]
-    M --> N[Frontend Dashboard UI]
+    G5 --> M1[Flag in Database]
+    L --> M2[Log Event to Supabase]
+    M1 --> N[Frontend Dashboard UI]
+    M2 --> N
 ```
 
 ---
