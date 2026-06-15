@@ -36,32 +36,32 @@ Knot acts as a digital collections agent. It scans a list of outstanding invoice
 
 ```mermaid
 graph TD
-    A[Cron/Manual Trigger] -->|API Request| B(Flask Server)
-    B --> C{Pydantic Validation}
-    C -->|Invalid Data| D[Reject / Log Error]
-    C -->|Valid CSV/Excel| E[Escalation Engine]
+    A["Cron/Manual Trigger"] -->|"API Request"| B("Flask Server")
+    B --> C{"Pydantic Validation"}
+    C -->|"Invalid Data"| D["Reject / Log Error"]
+    C -->|"Valid CSV/Excel"| E["Escalation Engine"]
     
-    E --> F{Days Overdue?}
-    F -->|1-7 Days| G1[Stage 1: Friendly Reminder]
-    F -->|8-14 Days| G2[Stage 2: Polite but Firm]
-    F -->|15-21 Days| G3[Stage 3: Formal & Serious]
-    F -->|22-30 Days| G4[Stage 4: Stern Final Notice]
-    F -->|30+ Days| G5[Stage 5: Legal Review - NO EMAIL]
+    E --> F{"Days Overdue?"}
+    F -->|"1-7 Days"| G1["Stage 1: Friendly Reminder"]
+    F -->|"8-14 Days"| G2["Stage 2: Polite but Firm"]
+    F -->|"15-21 Days"| G3["Stage 3: Formal & Serious"]
+    F -->|"22-30 Days"| G4["Stage 4: Stern Final Notice"]
+    F -->|"30+ Days"| G5["Stage 5: Legal Review - NO EMAIL"]
     
-    G1 --> H[LangChain LCEL Pipeline]
+    G1 --> H["LangChain LCEL Pipeline"]
     G2 --> H
     G3 --> H
     G4 --> H
-    H --> I[Groq API: LLaMA 3.1 70B]
-    I --> J{Output Validation}
+    H --> I["Groq API: LLaMA 3.1 70B"]
+    I --> J{"Output Validation"}
     
-    J -->|Failed| K[Retry Logic]
+    J -->|"Failed"| K["Retry Logic"]
     K --> I
-    J -->|Pass| L[Dry Run / SMTP Send]
+    J -->|"Pass"| L["Dry Run / SMTP Send"]
     
-    G5 --> M1[Flag in Database]
-    L --> M2[Log Event to Supabase]
-    M1 --> N[Frontend Dashboard UI]
+    G5 --> M1["Flag in Database"]
+    L --> M2["Log Event to Supabase"]
+    M1 --> N["Frontend Dashboard UI"]
     M2 --> N
 ```
 
