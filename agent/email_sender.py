@@ -36,6 +36,7 @@ def send_email_smtp(generated: GeneratedEmail, invoice: InvoiceRecord) -> bool:
 def dry_run_log(generated: GeneratedEmail, invoice: InvoiceRecord) -> bool:
     date_str = datetime.now().strftime("%Y-%m-%d")
     log_file = os.path.join(settings.LOGS_DIR, f"dry_run_{date_str}.json")
+    os.makedirs(os.path.dirname(log_file), exist_ok=True)
     
     log_entry = {
         "timestamp": datetime.now().isoformat(),
