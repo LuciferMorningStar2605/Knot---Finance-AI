@@ -28,13 +28,30 @@ class Settings:
             AUDIT_DB_PATH = "/tmp/audit_trail.db"
         else:
             AUDIT_DB_PATH = os.path.join(BASE_DIR, "output/audit_db/audit_trail.db")
-    LOGS_DIR: str = os.path.join(BASE_DIR, os.getenv("LOGS_DIR", "logs/"))
-    DATA_DIR: str = os.path.join(BASE_DIR, os.getenv("DATA_DIR", "data/"))
+    LOGS_DIR: str = os.getenv("LOGS_DIR", "")
+    if not LOGS_DIR:
+        if os.getenv("VERCEL"):
+            LOGS_DIR = "/tmp/logs/"
+        else:
+            LOGS_DIR = os.path.join(BASE_DIR, "logs/")
+    
+    DATA_DIR: str = os.getenv("DATA_DIR", "")
+    if not DATA_DIR:
+        if os.getenv("VERCEL"):
+            DATA_DIR = "/tmp/data/"
+        else:
+            DATA_DIR = os.path.join(BASE_DIR, "data/")
+            
     PROMPTS_DIR: str = os.path.join(BASE_DIR, "prompts")
 
     # LangChain Cache
     USE_LANGCHAIN_CACHE: bool = os.getenv("USE_LANGCHAIN_CACHE", "true").lower() == "true"
-    CACHE_DB_PATH: str = os.path.join(BASE_DIR, os.getenv("CACHE_DB_PATH", "output/langchain_cache.db"))
+    CACHE_DB_PATH: str = os.getenv("CACHE_DB_PATH", "")
+    if not CACHE_DB_PATH:
+        if os.getenv("VERCEL"):
+            CACHE_DB_PATH = "/tmp/langchain_cache.db"
+        else:
+            CACHE_DB_PATH = os.path.join(BASE_DIR, "output/langchain_cache.db")
 
     # Agent Behaviour
     MAX_EMAIL_RETRIES: int = int(os.getenv("MAX_EMAIL_RETRIES", "2"))
