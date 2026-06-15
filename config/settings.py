@@ -22,7 +22,12 @@ class Settings:
 
     # Paths
     BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    AUDIT_DB_PATH: str = os.path.join(BASE_DIR, os.getenv("AUDIT_DB_PATH", "output/audit_db/audit_trail.db"))
+    AUDIT_DB_PATH: str = os.getenv("AUDIT_DB_PATH", "")
+    if not AUDIT_DB_PATH:
+        if os.getenv("VERCEL"):
+            AUDIT_DB_PATH = "/tmp/audit_trail.db"
+        else:
+            AUDIT_DB_PATH = os.path.join(BASE_DIR, "output/audit_db/audit_trail.db")
     LOGS_DIR: str = os.path.join(BASE_DIR, os.getenv("LOGS_DIR", "logs/"))
     DATA_DIR: str = os.path.join(BASE_DIR, os.getenv("DATA_DIR", "data/"))
     PROMPTS_DIR: str = os.path.join(BASE_DIR, "prompts")
