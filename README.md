@@ -1,6 +1,6 @@
 # Knot — Autonomous Finance AI Agent
 
-## <span style="color:red">Live Demo Link:</span> [https://knot-finance-ai.onrender.com](https://knot-finance-ai.onrender.com)
+## <span style="color:red">Live Demo Link:</span> [https://knot-finance-ai-eile.vercel.app/](https://knot-finance-ai-eile.vercel.app/)
 
 ![Knot Dashboard](https://img.shields.io/badge/Status-Production_Ready-success) ![Python](https://img.shields.io/badge/Python-3.11-blue) ![Flask](https://img.shields.io/badge/Flask-Headless_API-black) ![LLaMA 3](https://img.shields.io/badge/LLM-Llama_3.1_70B-orange) ![Supabase](https://img.shields.io/badge/Database-Supabase-green)
 
