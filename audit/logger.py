@@ -33,8 +33,8 @@ class EmailAudit(Base):
     run_id = Column(String(100))
 
 # Database Connection
-# Fallback to local SQLite if DATABASE_URL is not set
-db_url = os.getenv("DATABASE_URL")
+# Fallback to Vercel Postgres URL or local SQLite if DATABASE_URL is not set
+db_url = os.getenv("DATABASE_URL") or os.getenv("POSTGRES_URL")
 if not db_url:
     db_url = f"sqlite:///{settings.AUDIT_DB_PATH}"
 elif db_url.startswith("postgres://"):

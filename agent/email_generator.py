@@ -12,8 +12,8 @@ from models.schemas import EscalationTask, GeneratedEmail, PersonalizationCheck
 logger = logging.getLogger(__name__)
 
 # Primary and Fallback Models
-PRIMARY_MODEL = "llama-3.3-70b-versatile"
-FALLBACK_MODEL = "mixtral-8x7b-32768"
+PRIMARY_MODEL = settings.GROQ_MODEL
+FALLBACK_MODEL = settings.GROQ_FALLBACK_MODEL
 
 def get_llm(model_name: str):
     return ChatGroq(
