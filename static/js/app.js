@@ -160,7 +160,7 @@ function renderInvoiceTable(rows) {
 async function resolveInvoice(invNo) {
   if(!confirm("Mark invoice " + invNo + " as resolved? This will clear it from the active queue.")) return;
   await fetch('/api/resolve/' + invNo, { method: 'POST' });
-  await Promise.all([loadDashboard(), loadInvoices(), loadAudit()]);
+  await refreshAll();
 }
 
 function stageBadge(s) {
@@ -460,7 +460,7 @@ function setupRunAgent() {
 
     closeBtn.style.display = 'flex';
     indicator.innerHTML = '<span class="status-dot done"></span><span>Agent Done</span>';
-    await Promise.all([loadDashboard(), loadInvoices(), loadAudit()]);
+    await refreshAll();
   };
 
   document.getElementById('run-agent-btn').addEventListener('click', handler);
@@ -484,11 +484,17 @@ if (tempRange) tempRange.addEventListener('input', () => { tempVal.textContent =
 document.getElementById('clear-db-btn')?.addEventListener('click', async () => {
   if(!confirm("Are you sure you want to completely wipe the database? This cannot be undone.")) return;
   await fetch('/api/data/clear', { method: 'POST' });
-  await Promise.all([loadDashboard(), loadInvoices(), loadAudit()]);
+  await refreshAll();
 });
 
 document.getElementById('clear-audit-btn')?.addEventListener('click', async () => {
   if(!confirm("Are you sure you want to clear the entire audit log? This will remove all records.")) return;
   await fetch('/api/data/clear', { method: 'POST' });
-  await Promise.all([loadDashboard(), loadInvoices(), loadAudit()]);
+  await refreshAll();
 });
+
+async function refreshAll() {
+  await Promise.all([loadDashboard(), loadInvoices(), loadAudit()]);
+  buildEmailLab();
+  buildAnalyticsCharts();
+}
