@@ -103,7 +103,7 @@ def api_run():
         filepath = os.path.join(settings.DATA_DIR, f.filename)
         f.save(filepath)
     else:
-        filepath = os.path.join(settings.DATA_DIR, "sample_invoices.csv")
+        filepath = os.path.join(settings.BASE_DIR, "data", "sample_invoices.csv")
 
     try:
         summary = run_agent(filepath)

@@ -367,7 +367,14 @@ function setupFileUpload() {
   const input = document.getElementById('file-input');
   zone.addEventListener('dragover',  e => { e.preventDefault(); zone.classList.add('dragover'); });
   zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
-  zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('dragover'); if(e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('dragover');
+    if (e.dataTransfer.files[0]) {
+      input.files = e.dataTransfer.files;
+      handleFile(e.dataTransfer.files[0]);
+    }
+  });
   input.addEventListener('change', () => { if(input.files[0]) handleFile(input.files[0]); });
 
   document.getElementById('preview-btn').addEventListener('click', () => {
